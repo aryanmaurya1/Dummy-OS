@@ -18,12 +18,15 @@ read:
         mov dh, 0x0 ; HEAD NUMBER
         mov bx, buffer ; WRITES DATA TO (ES:BX)
         int 0x13
-        jc error ; JUMP IF CARRY
+        call handler_data
+        jmp $
 
+handler_data:
+        jc error ; JUMP IF CARRY
         mov si, buffer
         call print
-        
-        jmp $		
+        ret
+        		
 error:
         mov si, error_message
         call print
