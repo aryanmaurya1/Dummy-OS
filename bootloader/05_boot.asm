@@ -16,7 +16,7 @@ read:
         mov ch, 0x0 ; LOWER 8 BITS OF CYLINDER NUMBER
         mov cl, 0x2 ; SECTOR NUMBER
         mov dh, 0x0 ; HEAD NUMBER
-        mov bx, buffer
+        mov bx, buffer ; WRITES DATA TO (ES:BX)
         int 0x13
         jc error ; JUMP IF CARRY
 

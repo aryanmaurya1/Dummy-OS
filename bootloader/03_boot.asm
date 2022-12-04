@@ -10,7 +10,6 @@ step2:
         cli
         mov ax, 0x7c0
         mov ds, ax
-        mov cs, ax
         mov ax, 0x00
         mov ss, ax
         mov sp, 0x7c00
