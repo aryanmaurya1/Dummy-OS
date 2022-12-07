@@ -72,7 +72,7 @@ ata_lba_read:
         out dx, al
         ; FINISHED SENDING THE HIGHEST 8 BITS OF THE LBA
 
-        ; SENDING TOTAL SECTORY TO READ
+        ; SENDING TOTAL SECTORS TO READ
         mov eax, ecx
         mov dx, 0x1F2
         out dx, al
