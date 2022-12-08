@@ -18,5 +18,13 @@ _start:
         in al, 0x92
         or al, 2
         out 0x92, al
-        
+
+        call print_char
         jmp $
+
+print_char:
+        mov ax, 'A'
+        mov ah, 0x0c
+        mov [0xb8000], ax
+
+        ret

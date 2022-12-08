@@ -1,6 +1,7 @@
 ORG 0x7c00                           
 BITS 16
 
+; Values in CODE_SEG and DATA_SEG are offsets.
 CODE_SEG equ gdt_code - gdt_start
 DATA_SEG equ gdt_data - gdt_start
 
@@ -61,8 +62,9 @@ load32:
         mov ecx, 100
         mov edi, 0x0100000
         call ata_lba_read
-        jmp CODE_SEG:0x0100000
+        jmp CODE_SEG:0x0100000 ; Kernel is loaded at 1MB in the memory, jumping to it
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Routine to read sectors from hard disk ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ata_lba_read:
         mov ebx, eax ; BACKUP THE LBA
         ; SENDING THE HIGHEST 8 BIT OF THE LBA TO THE HARD DISK CONTROLLER
@@ -118,5 +120,6 @@ ata_lba_read:
         ; END THE READING SECTORS IN MEMORY
         ret 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Filling rest of the bytes with zero and creating signature ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 times 510-($ - $$) db 0         
 dw 0xAA55			
