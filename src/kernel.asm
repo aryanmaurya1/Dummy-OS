@@ -1,5 +1,6 @@
 [BITS 32]
 global _start
+extern kernel_main
 
 CODE_SEG equ 0x08
 DATA_SEG equ 0x10
@@ -20,6 +21,7 @@ _start:
         out 0x92, al
 
         call print_char
+        call kernel_main
         jmp $
 
 print_char:
