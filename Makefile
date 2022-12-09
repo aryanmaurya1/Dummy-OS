@@ -20,3 +20,6 @@ clean:
 		rm -rf ./bin/boot.bin
 		rm -rf ./bin/os.bin
 		rm -rf ./bin/kernel.bin
+		rm -rf ./build/kernel.asm.o
+		rm -rf ./build/kernelfull.o
+		

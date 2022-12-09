@@ -26,5 +26,6 @@ print_char:
         mov ax, 'A'
         mov ah, 0x0c
         mov [0xb8000], ax
-
         ret
+
+times 510-($ - $$) db 0
