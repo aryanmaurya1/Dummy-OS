@@ -44,6 +44,20 @@ void terminal_writestr(const char* msg, char color) {
   }
 }
 
+void terminal_writestr_pos(int x, int y, const char* msg, char color) {
+  uint16_t temp[2] = {terminal_row, terminal_col};
+  terminal_col = x;
+  terminal_row = y;
+
+  int i = 0;
+  while(msg[i]) {
+    terminal_writechar(msg[i++], color);
+  }
+
+  terminal_row = temp[0];
+  terminal_col = temp[1];
+}
+
 void terminal_initialize() {
   // Resetting global variables.
   terminal_row = 0;
@@ -70,4 +84,5 @@ void kernel_main() {
   char* msg = "HELLO WORLD FROM MY KERNEL !!";
   terminal_initialize();
   terminal_writestr(msg, 10);
+  terminal_writestr_pos(50, 10, "hey there !!", 13);
 }
