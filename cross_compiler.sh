@@ -1,7 +1,7 @@
 sudo apt update
 sudo apt install -y build-essential bison flex libgmp3-dev libmpc-dev libmpfr-dev texinfo libisl-dev nasm
-mkdir src
-cd src
+mkdir $HOME/src
+cd $HOME/src
 wget https://ftp.gnu.org/gnu/binutils/binutils-2.39.tar.xz
 wget https://ftp.gnu.org/gnu/gcc/gcc-10.2.0/gcc-10.2.0.tar.xz
 tar -xvf binutils-2.39.tar.xz
@@ -28,4 +28,3 @@ make all-gcc
 make all-target-libgcc
 make install-gcc
 make install-target-libgcc
-
